@@ -56,7 +56,7 @@ function grabMovie(movieName) {
     // If the request is successful (i.e. if the response status code is 200)
     if (!error && response.statusCode === 200) {
       const movieData = JSON.parse(body);
-      console.log(`Movie Title: ${movieData.Title}\n\n Release Date: ${movieData.Released}\n\n IMDB Rating: ${movieData.Ratings[0].Value}\n\n Rotten Tomatoes Rating: ${movieData.Ratings[1].Value}\n\n Country Produced In: ${movieData.Country}\n\n Language: ${movieData.Language}\n\n Plot: ${movieData.Plot}\n\n Starring: ${movieData.Actors}`);
+      console.log(`\nMovie Title: ${movieData.Title}\n\nRelease Date: ${movieData.Released}\n\nIMDB Rating: ${movieData.Ratings[0].Value}\n\nRotten Tomatoes Rating: ${movieData.Ratings[1].Value}\n\nCountry Produced In: ${movieData.Country}\n\nLanguage: ${movieData.Language}\n\nPlot: ${movieData.Plot}\n\nStarring: ${movieData.Actors}`);
     }
   });
 };
@@ -64,14 +64,18 @@ function grabMovie(movieName) {
 function grabConcert(artist) {
   request(`https://rest.bandsintown.com/artists/${artist}/events?app_id=${bandsKey}`, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      console.log(JSON.parse(body));
       const concertData = JSON.parse(body);
-      console.log(`${artist} is currently playing these venues:`)
-      for (let i = 0; i < concertData.length; i++) {
-        let dateTime = moment(concertData[i].datetime).format('MMMM Do, YYYY');
-        console.log(`\nDate: ${dateTime}\nVenue Name: ${concertData[i].venue.name}\nLocation: ${concertData[i].venue.city}, ${concertData[i].venue.region} ${concertData[i].venue.country}\n`);
-        console.log(`====================`)
+      if (concertData.length < 1) {
+        console.log(`${artist} is not currently playing.`);
       }
+      else {
+        console.log(`\n${artist} is currently playing these venues:`)
+        for (let i = 0; i < concertData.length; i++) {
+          let dateTime = moment(concertData[i].datetime).format('MMMM Do, YYYY');
+          console.log(`\nDate: ${dateTime}\nVenue Name: ${concertData[i].venue.name}\nLocation: ${concertData[i].venue.city}, ${concertData[i].venue.region} ${concertData[i].venue.country}\n`);
+          console.log(`====================`)
+        }
+      };
     }
   });
 };
