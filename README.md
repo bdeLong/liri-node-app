@@ -27,9 +27,9 @@ If the user wants to search a song, after node liri.js they would type spotify-t
 When the user presses enter, a request is made to the Spotify API, and a response is logged with the following displayed for all the results:
 
 * Artist(s)
+* The album that the song is from
 * The song's name
 * A preview link of the song from Spotify
-* The album that the song is from
 
 The API will return all results associated with the provided song name
 
