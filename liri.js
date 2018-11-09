@@ -77,7 +77,7 @@ function grabConcert(artist) {
     if (!error && response.statusCode === 200) {
       const concertData = JSON.parse(body);
       if (concertData.length < 1) {
-        console.log(`${artist} is not currently playing.`);
+        console.log(`${artist} is not currently playing any venues.`);
       }
       // if artist/band has data, response is captured and logged here
       else {
