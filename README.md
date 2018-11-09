@@ -80,7 +80,7 @@ When the user presses enter, a request is made to the Bands in Town API, and a r
 * Venue location
 * Date of the Event
 
-The API will return all the venue the results associated with the provided band/artist name.
+The API will return all the venue results associated with the provided band/artist name.
 
 ![LIRI Concert choice results](Screenshots/Concert_choice_results.png)
 
@@ -96,7 +96,7 @@ The do-what-it-says function uses the fs package to read the random.txt file, an
 
 ![LIRI do what it says file](Screenshots/Do_what_it_says_random_file.png)
 
-Depending on what command and value the random.txt file holds, LIRI will run the corresponding function.  My file holds the spotify-this-song command and the song "I Want it That Way" by the Backstreet Boys.
+Depending on what command and value the random.txt file holds, LIRI will run the corresponding function.  My file holds the spotify-this-song command and the song "I Want It That Way" by the Backstreet Boys, so LIRI sends a request to the Spotify API for "I Want It That Way" and logs the response.
 
 ![LIRI do what it says results](Screenshots/Do_what_it_says_results.png)
 
